@@ -47,9 +47,9 @@ generaButton.addEventListener("click", function () {
 function generateField(max, domEl) {
 
     //genero l'array di bombe
-    const bombs = generateBombs(1,max);
+    const bombs = generateBombs(1, max);
 
-console.log(bombs);
+    console.log(bombs);
 
     //ciclo i numeri di volte che devo creare la cella
     for (let i = 0; i < max; i++) {
@@ -67,8 +67,17 @@ console.log(bombs);
         cellaEl.addEventListener("click", function () {
             console.log(this.innerText);
 
-            this.classList.toggle("active");
+            //adesso prima di vedere che colore mettere mi chiedo se il numero di questa cella è contenuto nell'array di bombe, se si allora gli metto la classe rossa, altrimenti azzurra
 
+            if (bombs.includes(Number(cellaEl.innerText))){
+                this.classList.toggle("active-red");
+console.log("ciao rosso");
+            }else {
+                this.classList.toggle("active");
+                console.log("ciao azzurro");
+            }
+
+          
         })
 
     }
@@ -87,7 +96,7 @@ function generateCellMarkup(numb) {
 }
 
 //funzione che genera un numero di 16 bombe comprese tra il minimo e il massimo passato al aprametro non ripetibile
-function generateBombs(min,max) {
+function generateBombs(min, max) {
 
     const bombs = [];
     while (bombs.length !== 16) {
@@ -98,7 +107,7 @@ function generateBombs(min,max) {
         if (!bombs.includes(bomb)) {
             //se la condizione è falsa eseguo il codice qui dentro
             bombs.push(bomb);
-    
+
         }
     }
     return bombs;

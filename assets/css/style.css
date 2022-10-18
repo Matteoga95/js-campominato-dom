@@ -47,3 +47,7 @@ button{
 .cell.active{
     background-color: rgb(71, 162, 195);
 } 
+
+.cell.active-red{
+    background-color: rgb(167, 22, 22);
+} 
