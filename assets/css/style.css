@@ -1,0 +1,49 @@
+body {
+    background-color: black;
+}
+h1{
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 48px;
+}
+
+button{
+   width: 15%;
+   max-width: 15%;
+   color: rgb(46, 45, 45);
+   background-color: rgb(233, 229, 229);
+   padding: 1.5rem;
+   font-size: 32px;
+   font-weight: bold;
+   border-radius: 20px;
+}
+
+.button-div{
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1142px;
+    margin: 3rem auto;
+    justify-content: space-around;
+}
+
+
+.cell {
+    width: calc(96% / 10 ) ;
+    aspect-ratio: 1/1;
+    border: 2px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.cell.active{
+    background-color: rgb(71, 162, 195);
+} 
