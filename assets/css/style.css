@@ -1,34 +1,65 @@
 body {
     background-color: black;
 }
-h1{
+
+h1 {
     color: white;
     text-align: center;
     margin: 2rem 0;
     font-size: 48px;
 }
 
-h2{
+h3 {
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 24px;
+}
+
+h2 {
     color: white;
     text-align: center;
     margin: 2rem 0;
     font-size: 52px;
 }
 
-button{
-   width: 15%;
-   max-width: 15%;
-   color: rgb(46, 45, 45);
-   background-color: rgb(233, 229, 229);
-   padding: 1.5rem;
-   font-size: 32px;
-   font-weight: bold;
-   border-radius: 20px;
+button {
+    width: 15%;
+    max-width: 15%;
+    color: rgb(46, 45, 45);
+    background-color: rgb(233, 229, 229);
+    padding: 1.5rem;
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 20px;
 }
 
-.button-div{
+.button-div {
     text-align: center;
 }
+
+#difficult {
+    padding: 2.5rem;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 20px;
+    color: white;
+    max-width: 300px;
+    width: 300px;
+}
+
+#difficult.ez {
+    color: rgb(92, 235, 92);
+}
+
+#difficult.normal {
+    color: rgb(51, 7, 228);
+}
+
+#difficult.hard {
+    color: rgb(237, 114, 6);
+}
+
 
 .container {
     display: flex;
@@ -40,7 +71,6 @@ button{
 
 
 .cell {
-    width: calc(96% / 10 ) ;
     aspect-ratio: 1/1;
     border: 2px solid white;
     color: white;
@@ -51,10 +81,10 @@ button{
     font-size: 28px;
 }
 
-.cell.active{
+.cell.active {
     background-color: rgb(71, 162, 195);
-} 
+}
 
-.cell.active-red{
+.cell.active-red {
     background-color: rgb(167, 22, 22);
-} 
+}

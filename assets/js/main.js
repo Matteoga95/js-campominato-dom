@@ -16,7 +16,7 @@
 //genero la griglia
 
 //mi definsico il numero di celle che voglio creare
-const maxCells = 100;
+let maxCells = 100;
 //genero l'array del numero di celle che mi serve
 let cellsNumbers = [];
 
@@ -24,8 +24,19 @@ let cellsNumbers = [];
 let score = 0;
 
 //mi salvo una variabile booleana in caso true faccio fermare il gioco 
-let stopGame = false
+let stopGame = false;
 
+//prima di generare le celle controllo la difficoltà e faccio in modo che possa essere cambiata
+const diff = document.getElementById("diff-btn");
+diff.addEventListener("click", function () {
+
+    setDifficult()
+
+
+})
+
+
+//creo l'array di numeri in base alla variabile max cells
 for (let i = 0; i < (maxCells); i++) {
     cellsNumbers.push(i);
 }
@@ -43,7 +54,9 @@ const generaButton = document.querySelector("button");
 generaButton.addEventListener("click", function () {
 
     //disabilito il bottone
-generaButton.disabled= true
+    generaButton.disabled = true
+    //e anche quello della difficoltà
+    diff.disabled = true
 
     //chiamo la funzione che genera le celle
     generateField(maxCells, domContainer);
@@ -131,6 +144,16 @@ function generateCellMarkup(numb) {
     const cellEl = document.createElement('div');
     cellEl.className = "cell";
     cellEl.innerText = numb;
+
+    //in base alla difficoltà scelta modifico la width della cella
+    if (maxCells == 100) {
+        cellEl.style.width = 'calc(95% / 10)'
+    } else if (maxCells == 81) {
+        cellEl.style.width = 'calc(95% / 9)'
+    } else if (maxCells == 49) {
+        cellEl.style.width = 'calc(95% / 7)'
+    }
+
     return cellEl;
 
 }
@@ -177,5 +200,72 @@ function getGameResult(vinto) {
 
     }
 }
+
+
+
+// check difficult
+function setDifficult() {
+    const diffSpan = document.getElementById("difficult");
+    //se modalità easy metto difficoltà normale
+    if (diffSpan.classList.contains("ez") == true) {
+
+        //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+        diffSpan.classList.remove("ez");
+        diffSpan.classList.add("normal");
+        diffSpan.innerText = "Normal";
+        maxCells = 81;
+
+
+    } else if (diffSpan.classList.contains("normal") == true) {
+        //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+        diffSpan.classList.remove("normal");
+        diffSpan.classList.add("hard");
+        diffSpan.innerText = "Hard";
+        maxCells = 49;
+
+    } else if (diffSpan.classList.contains("hard") == true) {
+        //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+        diffSpan.classList.remove("hard");
+        diffSpan.classList.add("ez");
+        diffSpan.innerText = "Easy";
+
+        //sistemop il max cell in base alla difficoltà
+        maxCells = 100;
+    }
+
+}
+//     console.log("sono entrato");
+//     const diff = document.getElementById("diff-btn");
+//     diff.addEventListener("click", function () {
+
+// console.log("ho cliccato");
+
+//         const diffSpan = document.getElementById("difficult");
+//         //se modalità easy metto difficoltà normale
+//         if (diffSpan.classList.includes("ez") == true) {
+
+//             //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+//             diffSpan.classList.remove("ez");
+//             diffSpan.classList.add("normal");
+//             diffSpan.innerText = "Normal"
+
+//         } else if (diffSpan.classList.includes("normal") == true) {
+//             //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+//             diffSpan.classList.remove("normal");
+//             diffSpan.classList.add("hard");
+//             diffSpan.innerText = "Hard"
+
+//         } else if (diffSpan.classList.includes("hard") == true) {
+//             //rimuovo la classe, metto quella nuova, sistemo il testo e la variabile della larghezza delle celle
+//             diffSpan.classList.remove("hard");
+//             diffSpan.classList.add("ez");
+//             diffSpan.innerText = "Easy"
+
+//         }
+
+
+//     })
+
+// }
 
 
