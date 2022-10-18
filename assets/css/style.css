@@ -1,23 +1,25 @@
 body {
-    background-color: black;
+    background-color: rgb(128, 127, 127);
+    font-family: 'Silkscreen', cursive;
 }
 
 h1 {
-    color: white;
+
     text-align: center;
     margin: 2rem 0;
-    font-size: 48px;
+    font-size: 64px;
+    font-weight: bold;
 }
 
 h3 {
-    color: white;
+
     text-align: center;
     margin: 2rem 0;
     font-size: 24px;
 }
 
 h2 {
-    color: white;
+
     text-align: center;
     margin: 2rem 0;
     font-size: 52px;
@@ -27,11 +29,11 @@ button {
     width: 15%;
     max-width: 15%;
     color: rgb(46, 45, 45);
-    background-color: rgb(233, 229, 229);
+   
     padding: 1.5rem;
     font-size: 32px;
     font-weight: bold;
-    border-radius: 20px;
+
 }
 
 .button-div {
@@ -42,8 +44,6 @@ button {
     padding: 2.5rem;
     font-size: 48px;
     font-weight: bold;
-    border-radius: 20px;
-    color: white;
     max-width: 300px;
     width: 300px;
 }
@@ -72,19 +72,26 @@ button {
 
 .cell {
     aspect-ratio: 1/1;
-    border: 2px solid white;
-    color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 28px;
+    background-image: url("../img/fullCell.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .cell.active {
-    background-color: rgb(71, 162, 195);
+    background-color: rgb(105, 107, 108);
+background-image: none;
+
 }
 
 .cell.active-red {
-    background-color: rgb(167, 22, 22);
+    /* background-color: rgb(167, 22, 22); */
+    background-image: url("../img/Bomb.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
