@@ -46,6 +46,10 @@ generaButton.addEventListener("click", function () {
 //funzione che aggiunge tante celle quante le passo al parametro, e le aggiunge all'elemento della dom che passo al parametro
 function generateField(max, domEl) {
 
+    //genero l'array di bombe
+    const bombs = generateBombs(1,max);
+
+console.log(bombs);
 
     //ciclo i numeri di volte che devo creare la cella
     for (let i = 0; i < max; i++) {
@@ -80,5 +84,28 @@ function generateCellMarkup(numb) {
     cellEl.innerText = numb;
     return cellEl;
 
+}
+
+//funzione che genera un numero di 16 bombe comprese tra il minimo e il massimo passato al aprametro non ripetibile
+function generateBombs(min,max) {
+
+    const bombs = [];
+    while (bombs.length !== 16) {
+        //genero numero casuale
+        const bomb = generateRandomNumber(min, max);
+        //verifico se il numero è stato già insertio nella lista di bombe, 
+        //se non lo è lo aggiungo altrimenti vado avanti
+        if (!bombs.includes(bomb)) {
+            //se la condizione è falsa eseguo il codice qui dentro
+            bombs.push(bomb);
+    
+        }
+    }
+    return bombs;
+}
+
+
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
