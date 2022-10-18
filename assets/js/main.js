@@ -20,6 +20,12 @@ const maxCells = 100;
 //genero l'array del numero di celle che mi serve
 let cellsNumbers = [];
 
+//mi definisco il counter del punteggio ottenuto
+let score = 0;
+
+//mi salvo una variabile booleana in caso true faccio fermare il gioco 
+let stopGame = false
+
 for (let i = 0; i < (maxCells); i++) {
     cellsNumbers.push(i);
 }
@@ -64,22 +70,41 @@ function generateField(max, domEl) {
 
         //adesso qua aggiungo un listener sulla cella con la function  per sistemare la classe active
 
+
+
         cellaEl.addEventListener("click", function () {
-            console.log(this.innerText);
+
 
             //adesso prima di vedere che colore mettere mi chiedo se il numero di questa cella è contenuto nell'array di bombe, se si allora gli metto la classe rossa, altrimenti azzurra
 
-            if (bombs.includes(Number(cellaEl.innerText))){
-                this.classList.toggle("active-red");
-console.log("ciao rosso");
-            }else {
-                this.classList.toggle("active");
-                console.log("ciao azzurro");
+            if (bombs.includes(Number(cellaEl.innerText))) {
+
+                //aggiungo classe active red solo se non la ha già e se la partita non si è fermata
+                if (!this.classList.contains("active-red") && stopGame == false) {
+
+                    this.classList.add("active-red");
+                    console.log(this.innerText);
+
+                    //se tocco una cella rossa termina la partita
+                    // cellaEl.removeEventListener("click",this)
+                    stopGame = true;
+
+                    console.log(stopGame);
+                }
+
+            } else {
+
+                //aggiungo classe active solo se non la ha già e se la partita non si è fermata
+                if (!this.classList.contains("active") && stopGame == false) {
+                    console.log(stopGame);
+                    this.classList.add("active");
+                    console.log(this.innerText);
+                    //se tocco una cella azzurra aumento lo score
+                    score++;
+                    console.log(score);
+                }
             }
-
-          
         })
-
     }
 
 }
@@ -117,4 +142,6 @@ function generateBombs(min, max) {
 function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+
 
