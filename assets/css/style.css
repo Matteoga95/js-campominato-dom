@@ -8,6 +8,13 @@ h1{
     font-size: 48px;
 }
 
+h2{
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 52px;
+}
+
 button{
    width: 15%;
    max-width: 15%;

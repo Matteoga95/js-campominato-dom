@@ -42,10 +42,18 @@ const generaButton = document.querySelector("button");
 //aggiungo listener
 generaButton.addEventListener("click", function () {
 
+    //disabilito il bottone
+generaButton.disabled= true
+
     //chiamo la funzione che genera le celle
     generateField(maxCells, domContainer);
 
 })
+
+
+
+
+
 
 
 
@@ -85,11 +93,10 @@ function generateField(max, domEl) {
                     this.classList.add("active-red");
                     console.log(this.innerText);
 
-                    //se tocco una cella rossa termina la partita
-                    // cellaEl.removeEventListener("click",this)
+                    //se tocco una cella rossa termina la partita                
                     stopGame = true;
-
-                    console.log(stopGame);
+                    //faccio le operazioni in caso di perdita
+                    getGameResult(false)
                 }
 
             } else {
@@ -101,7 +108,15 @@ function generateField(max, domEl) {
                     console.log(this.innerText);
                     //se tocco una cella azzurra aumento lo score
                     score++;
-                    console.log(score);
+                    console.log(max);
+                    //se lo score tocca il massimo finisco la partita perchè ha vinto
+                    if (score == (max - 16)) {
+                        stopGame = true;
+
+                        //faccio le operazioni in caso di vincita
+                        getGameResult(true)
+                    }
+
                 }
             }
         })
@@ -143,5 +158,24 @@ function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//funzione di disattivazione della partita, mette lo score e dice che è finita 
+function getGameResult(vinto) {
+
+    const resEl = document.getElementById("result");
+    //prima vedo se ha perso o meno
+    if (vinto == false) {
+
+        //ha perso 
+        resEl.innerText = "Hai perso mi dispiace, hai totalizzato un punteggio totale di " + score + ", ricarica la pagina per cominciare una nuova partita"
+
+
+    } else {
+        //ha vinto
+        resEl.innerText = "Hai vinto congratulazioni, hai totalizzato un punteggio totale di " + score + ", ricarica la pagina per cominciare una nuova partita"
+
+
+
+    }
+}
 
 
